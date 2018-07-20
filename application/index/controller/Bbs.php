@@ -21,9 +21,10 @@ class Bbs extends \think\Controller
         //$this->assign('show',$show);
         //return $this->fetch('show');
         // 查询状态为1的用户数据 并且每页显示10条数据
-        $show = Db::name('data')->where('id','>',0)->paginate(10,60);
+        $show = Db::name('data')->where('id','>',0)->order('id','desc')->paginate(10,60);
 // 把分页数据赋值给模板变量list
 //        print_r($show);die();
+
         $this->assign('show', $show);
 // 渲染模板输出
         return $this->fetch();
@@ -54,7 +55,7 @@ class Bbs extends \think\Controller
            ->insert(['title' =>$title,'content'=>$content,'create_time'=>time()]);
             //dump($result);
 
-            return $this->success("恭喜你留言成功","bbs/show");
+            return $this->success("恭喜你留言成功^_^","bbs/show");
         }
 
         //return "恭喜你留言成功";

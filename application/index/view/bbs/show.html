@@ -22,14 +22,17 @@
     <p>留言如下：</p>
 </div>
     <table class="table  table-bordered table-hover">
-        <thead><th>ID</th><th>姓名</th><th>内容</th><th>文章</th></thead>
+        <thead><th>ID</th><th>标题</th><th>内容</th><th>留言时间</th></thead>
+        <!--<th>姓名</th>-->
         <tbody>
         {volist name='show' id='user'}
-        <tr><th>{$i}</th><td>{$user.name}</td><td>{$user.title}</td><td>{$user.content}</td></tr>
+        <tr><th>{$user.id}</th><td>{$user.title}</td><td>{$user.content|mb_substr=0,20,'utf-8'}</td><td>{$user.create_time|date='Y-m-d H:i:s',###}</td></tr>
+        <!--<td>{$user.name}</td>-->
         {/volist}
         </tbody>
     </table>
 </div>
+
 {$show->render()}
 
 <a href="http://lmc.tp5/index/bbs/add">发步留言</a>
